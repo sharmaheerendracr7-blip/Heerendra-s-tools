@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Free Online Tools - Heerendra Tools</title>
+  <meta name="description" content="Best free online tools website with password generator, word counter, calculator and more.">
+  <meta name="keywords" content="free tools, online tools, password generator, word counter, calculator">
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #0f0f0f;
+      color: white;
+      text-align: center;
+    }
+
+    h1 { padding: 20px; }
+
+    .desc {
+      max-width: 700px;
+      margin: auto;
+      color: #bbb;
+      padding: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1c1c1c;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      width: 280px;
+    }
+
+    input {
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 8px;
+      width: 90%;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #00ffcc;
+      cursor: pointer;
+    }
+
+    .blog {
+      margin-top: 40px;
+      padding: 20px;
+      background: #111;
+    }
+
+    .blog-post {
+      max-width: 600px;
+      margin: 15px auto;
+      background: #1c1c1c;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #000;
+    }
+
+    footer a {
+      color: #00ffcc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px){
+      .card { width: 90%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🔥 Heerendra Tools</h1>
+
+<p class="desc">
+Free online tools website 🚀 — Use powerful tools like password generator, calculator, converters and more. Fast, simple & free!
+</p>
+
+<div class="container">
+
+<div class="card">
+<h3>Password Generator</h3>
+<button onclick="p()">Generate</button>
+<p id="p"></p>
+</div>
+
+<div class="card">
+<h3>Word Counter</h3>
+<input id="w">
+<button onclick="wc()">Count</button>
+<p id="wc"></p>
+</div>
+
+<div class="card">
+<h3>Calculator</h3>
+<input id="calc" placeholder="2+2">
+<button onclick="cal()">Solve</button>
+<p id="cal"></p>
+</div>
+
+<div class="card">
+<h3>Text Uppercase</h3>
+<input id="up">
+<button onclick="uc()">Convert</button>
+<p id="uc"></p>
+</div>
+
+<div class="card">
+<h3>Random Number</h3>
+<button onclick="rn()">Generate</button>
+<p id="rn"></p>
+</div>
+
+<div class="card">
+<h3>Age Calculator</h3>
+<input id="age" placeholder="Birth year">
+<button onclick="ac()">Calculate</button>
+<p id="ac"></p>
+</div>
+
+</div>
+
+<!-- BLOG SECTION -->
+
+<div class="blog">
+<h2>📘 Blog</h2>
+
+<div class="blog-post">
+<h3>Best Free Online Tools</h3>
+<p>Our website provides the best free tools like password generator, calculators, and converters to make your daily work easier.</p>
+</div>
+
+<div class="blog-post">
+<h3>Why Use Online Tools?</h3>
+<p>Online tools save time and effort. You don’t need to install anything — just open and use instantly.</p>
+</div>
+
+<div class="blog-post">
+<h3>Top Tools You Should Use</h3>
+<p>Password generator, word counter, and calculators are essential tools for students and professionals.</p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</footer>
+
+<script>
+function p(){let c="abc123XYZ@#";let pass="";for(let i=0;i<8;i++){pass+=c[Math.floor(Math.random()*c.length)]}document.getElementById("p").innerText=pass}
+function wc(){let t=w.value.trim();document.getElementById("wc").innerText=t? t.split(/\s+/).length:0}
+function cal(){try{document.getElementById("cal").innerText=eval(calc.value)}catch{document.getElementById("cal").innerText="Error"}}
+function uc(){document.getElementById("uc").innerText=up.value.toUpperCase()}
+function rn(){document.getElementById("rn").innerText=Math.floor(Math.random()*1000)}
+function ac(){document.getElementById("ac").innerText=new Date().getFullYear()-age.value}
+</script>
+
+</body>
+</html>
