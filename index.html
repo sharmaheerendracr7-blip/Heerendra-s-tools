@@ -6,209 +6,140 @@
 
 <title>Tool Verse 🚀</title>
 
-<!-- AdSense -->
 <meta name="google-adsense-account" content="ca-pub-4632067561827198">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632067561827198"
 crossorigin="anonymous"></script>
 
-<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-body{margin:0;font-family:Arial;background:#0a0a0a;color:white}
-
-/* LOADER */
-#loader{
-position:fixed;width:100%;height:100vh;background:black;
-display:flex;justify-content:center;align-items:center;
-flex-direction:column;z-index:9999;
-}
-#loader h1{color:#00ffcc;animation:glow 1.5s infinite alternate;}
-@keyframes glow{from{opacity:.5}to{opacity:1}}
-
-#main{display:none}
+body{margin:0;background:#0a0a0a;color:white;font-family:Arial}
+h1,h2{text-align:center}
 
 /* NAV */
-nav{display:flex;justify-content:space-between;padding:15px;background:black}
+nav{padding:15px;text-align:center;background:black}
 
-/* HERO */
-.hero{text-align:center;padding:40px}
+/* SEARCH */
+#searchBar{
+width:90%;padding:12px;margin:20px;border:none;border-radius:8px
+}
 
-/* TOOLS */
-.container{padding:20px}
+/* CARD */
 .card{
-background:rgba(255,255,255,0.05);
-padding:20px;margin:15px;border-radius:12px;
-transition:.3s;
+background:#111;margin:15px;padding:20px;border-radius:12px;
+transition:.3s
 }
 .card:hover{transform:scale(1.05);box-shadow:0 0 15px #00ffcc}
 
+/* BUTTON */
 button{
-padding:10px;border:none;border-radius:6px;
-background:#00ffcc;color:black;cursor:pointer
+padding:10px;background:#00ffcc;border:none;border-radius:6px;margin-top:10px
 }
-
-input{padding:8px;margin-top:10px;width:90%}
 
 /* CHAT */
 #chatToggle{
 position:fixed;bottom:20px;right:20px;
 background:#00ffcc;padding:15px;border-radius:50%;
-cursor:pointer;animation:bounce 1.5s infinite;
+cursor:pointer
 }
-@keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-}
-
 #chatbot{
 position:fixed;bottom:80px;right:20px;width:300px;
-background:#111;border-radius:10px;display:none;
+background:#111;display:none;border-radius:10px
 }
-.chat-header{background:#00ffcc;color:black;padding:10px}
-#chatbox{height:200px;overflow-y:auto;padding:10px}
-.chat-input{display:flex}
-.chat-input input{flex:1}
-
-footer{text-align:center;padding:20px;background:black}
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<h1>🚀 Tool Verse</h1>
-<p>Loading tools...</p>
-</div>
-
-<div id="main">
-
 <nav>
-<h2>🚀 Tool Verse</h2>
+<h1>🚀 Tool Verse</h1>
 </nav>
 
-<div class="hero">
-<h1>All-in-One Free Tools 😎</h1>
-<p>PDF, Image, AI tools — all in one place</p>
-</div>
+<h2>🔍 Coding Hub</h2>
+<input id="searchBar" placeholder="Search programs..." onkeyup="searchCode()">
 
-<div class="container">
+<div id="codeList"></div>
 
-<!-- PASSWORD -->
+<h2>🛠️ Tools</h2>
+
 <div class="card">
-<h3>🔐 Password Generator</h3>
-<p>Create strong passwords instantly.<br>Secure your accounts easily.</p>
-<button onclick="genPass()">Generate</button>
-<p id="pass"></p>
-</div>
-
-<!-- CALCULATOR -->
-<div class="card">
-<h3>🧮 Calculator</h3>
-<p>Quick calculations.<br>Fast and simple.</p>
-<input id="num1" placeholder="Number 1">
-<input id="num2" placeholder="Number 2">
-<button onclick="calc()">Add</button>
-<p id="result"></p>
-</div>
-
-<!-- IMAGE TO PDF -->
-<div class="card">
-<h3>📄 Image to PDF (Pro)</h3>
-<p>Convert image into real PDF.<br>Download instantly.</p>
+<h3>📄 Image to PDF</h3>
 <input type="file" id="imgInput">
 <button onclick="convertPDF()">Convert</button>
 </div>
 
-<!-- PPT MAKER -->
 <div class="card">
 <h3>📊 PPT Maker</h3>
-<p>Create simple presentations.<br>Download instantly.</p>
-<input id="pptTitle" placeholder="Slide Title">
-<input id="pptContent" placeholder="Slide Content">
-<button onclick="makePPT()">Create PPT</button>
-</div>
-
-<!-- EXTRA TOOLS -->
-<div class="card">
-<h3>🖼️ JPG to PNG</h3>
-<p>Convert images easily.<br>No quality loss.</p>
-<button onclick="window.open('https://image.online-convert.com/convert/jpg-to-png')">Convert</button>
+<input id="pptTitle" placeholder="Title">
+<input id="pptContent" placeholder="Content">
+<button onclick="makePPT()">Create</button>
 </div>
 
 <div class="card">
-<h3>📄 PDF Editor</h3>
-<p>Edit PDFs online.<br>Quick editing.</p>
-<button onclick="window.open('https://www.ilovepdf.com/edit-pdf')">Open</button>
-</div>
-
-<div class="card">
-<h3>📸 Screenshot Editor</h3>
-<p>Edit screenshots.<br>Advanced tools.</p>
-<button onclick="window.open('https://www.photopea.com')">Edit</button>
-</div>
-
-</div>
-
-<footer>
-<p>Email: sharmaheerendracr7@gmail.com</p>
-<p>© 2026 Tool Verse</p>
-</footer>
-
+<h3>🖼️ Image Compressor</h3>
+<input type="file" id="imgCompress">
+<button onclick="compressImg()">Compress</button>
 </div>
 
 <!-- CHAT -->
 <div id="chatToggle" onclick="toggleChat()">🤖</div>
 
 <div id="chatbot">
-<div class="chat-header">AI Assistant</div>
-<div id="chatbox"></div>
-<div class="chat-input">
+<div style="background:#00ffcc;color:black;padding:10px">AI Chat</div>
+<div id="chatbox" style="height:200px;overflow:auto"></div>
 <input id="userInput">
 <button onclick="sendMsg()">Send</button>
 </div>
-</div>
 
 <script>
-setTimeout(()=>{
-loader.style.display="none";
-main.style.display="block";
-},2000);
 
-/* PASSWORD */
-function genPass(){
-let c="ABCDEFGHIJKLMNOPQRSTUVWXYZ123456";
-let p="";
-for(let i=0;i<8;i++){
-p+=c[Math.floor(Math.random()*c.length)];
+/* PROGRAMS */
+let programs=[
+{name:"C Hello World",code:"#include<stdio.h>\nint main(){printf('Hello');}"},
+{name:"Python Hello",code:"print('Hello World')"},
+{name:"Java Hello",code:"class Main{public static void main(String[] a){System.out.println('Hello');}}"},
+{name:"Python Fibonacci",code:"a,b=0,1\nfor i in range(10): print(a);a,b=b,a+b"},
+{name:"C Factorial",code:"// factorial logic"},
+{name:"Java Loop",code:"// loop example"}
+];
+
+function showPrograms(list){
+let html="";
+list.forEach((p,i)=>{
+html+=`
+<div class="card">
+<h3>${p.name}</h3>
+<pre id="code${i}">${p.code}</pre>
+<button onclick="copyCode('code${i}')">Copy</button>
+</div>`;
+});
+document.getElementById("codeList").innerHTML=html;
 }
-pass.innerText=p;
+showPrograms(programs);
+
+function searchCode(){
+let val=searchBar.value.toLowerCase();
+let filtered=programs.filter(p=>p.name.toLowerCase().includes(val));
+showPrograms(filtered);
 }
 
-/* CALC */
-function calc(){
-result.innerText=Number(num1.value)+Number(num2.value);
+function copyCode(id){
+navigator.clipboard.writeText(document.getElementById(id).innerText);
+alert("Copied!");
 }
 
 /* PDF */
 function convertPDF(){
-let file=document.getElementById("imgInput").files[0];
-if(!file){alert("Select image"); return;}
-
+let file=imgInput.files[0];
+if(!file){alert("Select image");return;}
 const { jsPDF } = window.jspdf;
 let reader=new FileReader();
 
 reader.onload=function(e){
 let img=new Image();
 img.src=e.target.result;
-
 img.onload=function(){
-let pdf=new jsPDF({
-orientation: img.width>img.height?"landscape":"portrait",
-unit:"px",
-format:[img.width,img.height]
-});
+let pdf=new jsPDF({unit:"px",format:[img.width,img.height]});
 pdf.addImage(img,'JPEG',0,0,img.width,img.height);
 pdf.save("ToolVerse.pdf");
 }
@@ -218,28 +149,50 @@ reader.readAsDataURL(file);
 
 /* PPT */
 function makePPT(){
-let title=pptTitle.value;
-let content=pptContent.value;
-
 let blob=new Blob(
-["Title: "+title+"\n\nContent: "+content],
+["Title: "+pptTitle.value+"\n\n"+pptContent.value],
 {type:"application/vnd.ms-powerpoint"}
 );
-
 let link=document.createElement("a");
 link.href=URL.createObjectURL(blob);
 link.download="ToolVerse.ppt";
 link.click();
 }
 
+/* COMPRESS */
+function compressImg(){
+let file=imgCompress.files[0];
+let reader=new FileReader();
+
+reader.onload=function(e){
+let img=new Image();
+img.src=e.target.result;
+
+img.onload=function(){
+let canvas=document.createElement("canvas");
+canvas.width=img.width/2;
+canvas.height=img.height/2;
+
+let ctx=canvas.getContext("2d");
+ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+let link=document.createElement("a");
+link.download="compressed.jpg";
+link.href=canvas.toDataURL("image/jpeg",0.6);
+link.click();
+}
+}
+reader.readAsDataURL(file);
+}
+
 /* CHAT */
 function toggleChat(){
-chatbot.style.display=(chatbot.style.display==="block")?"none":"block";
+chatbot.style.display=chatbot.style.display==="block"?"none":"block";
 }
 
 function sendMsg(){
 chatbox.innerHTML+="<p>👤:"+userInput.value+"</p>";
-chatbox.innerHTML+="<p>🤖:Hello 👋</p>";
+chatbox.innerHTML+="<p>🤖:Hi 👋</p>";
 userInput.value="";
 }
 </script>
