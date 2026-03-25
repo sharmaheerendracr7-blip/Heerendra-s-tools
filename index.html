@@ -16,7 +16,6 @@ margin:0;
 font-family:Arial;
 background:#0a0a0a;
 color:white;
-overflow-x:hidden;
 }
 
 /* LOADER */
@@ -29,11 +28,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:99999;
+z-index:9999;
 }
 
 #loader h1{
-font-size:40px;
 color:#00ffcc;
 animation: glow 1.5s infinite alternate;
 }
@@ -44,11 +42,8 @@ to{opacity:1;}
 }
 
 /* MAIN */
-#main{
-display:none;
-}
+#main{display:none;}
 
-/* NAV */
 nav{
 display:flex;
 justify-content:space-between;
@@ -62,28 +57,20 @@ margin:10px;
 text-decoration:none;
 }
 
-/* HERO */
 .hero{
 text-align:center;
-padding:50px 20px;
+padding:40px;
 }
 
-.hero h1{
-font-size:35px;
-color:#00ffcc;
-}
-
-/* TOOLS */
 .container{
 padding:20px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
 padding:20px;
 margin:15px;
-border-radius:12px;
+border-radius:10px;
 transition:0.3s;
 }
 
@@ -94,17 +81,13 @@ box-shadow:0 0 15px #00ffcc;
 
 button{
 padding:10px;
-border:none;
-border-radius:6px;
 background:#00ffcc;
+border:none;
 cursor:pointer;
+border-radius:5px;
 }
 
-input{
-padding:8px;
-width:80%;
-margin-top:10px;
-}
+input{padding:8px; margin-top:10px;}
 
 /* CHAT BUTTON */
 #chatToggle{
@@ -112,13 +95,9 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#00ffcc;
-color:black;
-font-size:22px;
 padding:15px;
 border-radius:50%;
 cursor:pointer;
-box-shadow:0 0 15px #00ffcc;
-z-index:9999;
 animation:bounce 1.5s infinite;
 }
 
@@ -127,103 +106,116 @@ animation:bounce 1.5s infinite;
 50%{transform:translateY(-8px);}
 }
 
-/* CHATBOX */
 #chatbot{
 position:fixed;
 bottom:80px;
 right:20px;
 width:300px;
 background:#111;
-border-radius:10px;
 display:none;
-overflow:hidden;
-box-shadow:0 0 15px #00ffcc;
+border-radius:10px;
 }
 
-.chat-header{
-background:#00ffcc;
-color:black;
-padding:10px;
-text-align:center;
-}
+.chat-header{background:#00ffcc; padding:10px; color:black;}
+#chatbox{height:200px; overflow-y:auto; padding:10px;}
+.chat-input{display:flex;}
+.chat-input input{flex:1;}
 
-#chatbox{
-height:200px;
-overflow-y:auto;
-padding:10px;
-}
-
-.chat-input{
-display:flex;
-}
-
-.chat-input input{
-flex:1;
-border:none;
-}
-
-.chat-input button{
-background:#00ffcc;
-}
-
-/* FOOTER */
 footer{
 text-align:center;
 padding:20px;
 background:black;
-margin-top:30px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
+<!-- LOADER -->
 <div id="loader">
 <h1>🚀 Tool Verse</h1>
 <p>Loading tools...</p>
 </div>
 
-<!-- MAIN WEBSITE -->
+<!-- MAIN -->
 <div id="main">
 
 <nav>
 <h2>🚀 Tool Verse</h2>
-<div>
-<a href="#">Home</a>
-<a href="#tools">Tools</a>
-</div>
 </nav>
 
 <div class="hero">
 <h1>All-in-One Free Tools 😎</h1>
-<p>PDF, Image, AI & More Tools in One Place</p>
+<p>Use powerful tools for PDF, Images, AI & more in one place.</p>
 </div>
 
-<div class="container" id="tools">
+<div class="container">
 
+<!-- PASSWORD -->
 <div class="card">
 <h3>🔐 Password Generator</h3>
+<p>Create strong and secure passwords instantly.<br>Protect your accounts easily with one click.</p>
 <button onclick="genPass()">Generate</button>
 <p id="pass"></p>
 </div>
 
+<!-- CALCULATOR -->
 <div class="card">
 <h3>🧮 Calculator</h3>
+<p>Quickly calculate numbers without leaving site.<br>Simple and fast math tool for daily use.</p>
 <input id="num1" placeholder="Number 1">
 <input id="num2" placeholder="Number 2">
 <button onclick="calc()">Add</button>
 <p id="result"></p>
 </div>
 
+<!-- IMAGE TO PDF (YOUR OWN TOOL) -->
 <div class="card">
-<h3>📄 PDF Editor</h3>
-<button onclick="window.open('https://www.ilovepdf.com/edit-pdf')">Open</button>
+<h3>📄 Image to PDF (Your Tool)</h3>
+<p>Convert images into PDF instantly.<br>No signup required, fully free tool.</p>
+<input type="file" id="imgInput">
+<button onclick="convertPDF()">Convert</button>
+</div>
+
+<!-- JPG PNG -->
+<div class="card">
+<h3>🖼️ JPG to PNG</h3>
+<p>Convert JPG images to PNG format easily.<br>Maintain quality without loss.</p>
+<button onclick="window.open('https://image.online-convert.com/convert/jpg-to-png')">Convert</button>
 </div>
 
 <div class="card">
-<h3>🖼️ JPG to PNG</h3>
-<button onclick="window.open('https://image.online-convert.com/convert/jpg-to-png')">Convert</button>
+<h3>🖼️ PNG to JPG</h3>
+<p>Convert PNG images into JPG quickly.<br>Useful for reducing file size.</p>
+<button onclick="window.open('https://image.online-convert.com/convert/png-to-jpg')">Convert</button>
+</div>
+
+<!-- PDF EDITOR -->
+<div class="card">
+<h3>📄 PDF Editor</h3>
+<p>Edit PDF files online easily.<br>Add text, images and more.</p>
+<button onclick="window.open('https://www.ilovepdf.com/edit-pdf')">Open</button>
+</div>
+
+<!-- SCREENSHOT -->
+<div class="card">
+<h3>📸 Screenshot Editor</h3>
+<p>Edit screenshots and images online.<br>Advanced editing like Photoshop.</p>
+<button onclick="window.open('https://www.photopea.com')">Edit</button>
+</div>
+
+<!-- AI -->
+<div class="card">
+<h3>🤖 AI Assistant</h3>
+<p>Chat with AI directly on website.<br>Ask questions and get instant answers.</p>
+<button onclick="toggleChat()">Open Chat</button>
+</div>
+
+<!-- PPT -->
+<div class="card">
+<h3>📊 AI PPT Maker</h3>
+<p>Create presentations using AI.<br>Save time and effort instantly.</p>
+<button onclick="window.open('https://gamma.app')">Create</button>
 </div>
 
 </div>
@@ -235,30 +227,26 @@ margin-top:30px;
 
 </div>
 
-<!-- CHAT BUTTON -->
+<!-- CHAT -->
 <div id="chatToggle" onclick="toggleChat()">🤖</div>
 
-<!-- CHATBOX -->
 <div id="chatbot">
 <div class="chat-header">AI Assistant</div>
 <div id="chatbox"></div>
-
 <div class="chat-input">
-<input id="userInput" placeholder="Type...">
+<input id="userInput">
 <button onclick="sendMsg()">Send</button>
 </div>
 </div>
 
 <script>
-/* LOADER */
 setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-document.getElementById("main").style.display="block";
+loader.style.display="none";
+main.style.display="block";
 },2000);
 
-/* TOOLS */
 function genPass(){
-let c="ABCDEFGHIJKLMNOPQRSTUVWXYZ123456";
+let c="ABC123xyz";
 let p="";
 for(let i=0;i<8;i++){
 p+=c[Math.floor(Math.random()*c.length)];
@@ -270,26 +258,41 @@ function calc(){
 result.innerText=Number(num1.value)+Number(num2.value);
 }
 
-/* CHAT */
+/* YOUR PDF TOOL */
+function convertPDF(){
+let file=document.getElementById("imgInput").files[0];
+if(!file){alert("Select image"); return;}
+
+let img=new Image();
+let reader=new FileReader();
+
+reader.onload=function(e){
+img.src=e.target.result;
+img.onload=function(){
+let canvas=document.createElement("canvas");
+canvas.width=img.width;
+canvas.height=img.height;
+let ctx=canvas.getContext("2d");
+ctx.drawImage(img,0,0);
+
+let link=document.createElement("a");
+link.download="converted.pdf";
+link.href=canvas.toDataURL("image/pdf");
+link.click();
+}
+}
+reader.readAsDataURL(file);
+}
+
 function toggleChat(){
-let chat=document.getElementById("chatbot");
-chat.style.display=(chat.style.display==="block")?"none":"block";
+chatbot.style.display=(chatbot.style.display==="block")?"none":"block";
 }
 
 function sendMsg(){
 let input=userInput.value;
-let chat=document.getElementById("chatbox");
-
-chat.innerHTML+="<p>👤: "+input+"</p>";
-
-let reply="I don't understand 🤔";
-if(input.includes("hi")) reply="Hello 👋";
-if(input.includes("tools")) reply="Use tools above 😎";
-
-chat.innerHTML+="<p>🤖: "+reply+"</p>";
-
+chatbox.innerHTML+="<p>👤:"+input+"</p>";
+chatbox.innerHTML+="<p>🤖:Hello 👋</p>";
 userInput.value="";
-chat.scrollTop=chat.scrollHeight;
 }
 </script>
 
