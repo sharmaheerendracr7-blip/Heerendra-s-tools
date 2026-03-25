@@ -1,131 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tool Verse 🚀</title>
 
-<!-- AdSense -->
+<!-- AdSense META -->
+<meta name="google-adsense-account" content="ca-pub-4632067561827198">
+
+<!-- AdSense SCRIPT -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632067561827198"
 crossorigin="anonymous"></script>
 
+<!-- jsPDF (PDF Tool) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
-body{
-margin:0;
-font-family:Arial;
-background:#0a0a0a;
-color:white;
-}
+body{margin:0;font-family:Arial;background:#0a0a0a;color:white}
 
 /* LOADER */
 #loader{
-position:fixed;
-width:100%;
-height:100vh;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
+position:fixed;width:100%;height:100vh;background:black;
+display:flex;justify-content:center;align-items:center;
+flex-direction:column;z-index:9999;
 }
-
-#loader h1{
-color:#00ffcc;
-animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow{
-from{opacity:0.5;}
-to{opacity:1;}
-}
+#loader h1{color:#00ffcc;animation:glow 1.5s infinite alternate;}
+@keyframes glow{from{opacity:.5}to{opacity:1}}
 
 /* MAIN */
-#main{display:none;}
+#main{display:none}
 
-nav{
-display:flex;
-justify-content:space-between;
-padding:15px;
-background:black;
-}
+/* NAV */
+nav{display:flex;justify-content:space-between;padding:15px;background:black}
 
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-}
+/* HERO */
+.hero{text-align:center;padding:40px}
 
-.hero{
-text-align:center;
-padding:40px;
-}
-
-.container{
-padding:20px;
-}
-
+/* TOOLS */
+.container{padding:20px}
 .card{
 background:rgba(255,255,255,0.05);
-padding:20px;
-margin:15px;
-border-radius:10px;
-transition:0.3s;
+padding:20px;margin:15px;border-radius:12px;
+transition:.3s;
 }
-
-.card:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px #00ffcc;
-}
+.card:hover{transform:scale(1.05);box-shadow:0 0 15px #00ffcc}
 
 button{
-padding:10px;
-background:#00ffcc;
-border:none;
-cursor:pointer;
-border-radius:5px;
+padding:10px;border:none;border-radius:6px;
+background:#00ffcc;color:black;cursor:pointer
 }
 
-input{padding:8px; margin-top:10px;}
+input{padding:8px;margin-top:10px}
 
 /* CHAT BUTTON */
 #chatToggle{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#00ffcc;
-padding:15px;
-border-radius:50%;
-cursor:pointer;
-animation:bounce 1.5s infinite;
+position:fixed;bottom:20px;right:20px;
+background:#00ffcc;padding:15px;border-radius:50%;
+cursor:pointer;animation:bounce 1.5s infinite;
 }
-
 @keyframes bounce{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
 }
 
+/* CHAT */
 #chatbot{
-position:fixed;
-bottom:80px;
-right:20px;
-width:300px;
-background:#111;
-display:none;
-border-radius:10px;
+position:fixed;bottom:80px;right:20px;width:300px;
+background:#111;border-radius:10px;display:none;
 }
+.chat-header{background:#00ffcc;color:black;padding:10px}
+#chatbox{height:200px;overflow-y:auto;padding:10px}
+.chat-input{display:flex}
+.chat-input input{flex:1}
 
-.chat-header{background:#00ffcc; padding:10px; color:black;}
-#chatbox{height:200px; overflow-y:auto; padding:10px;}
-.chat-input{display:flex;}
-.chat-input input{flex:1;}
-
-footer{
-text-align:center;
-padding:20px;
-background:black;
-}
+/* FOOTER */
+footer{text-align:center;padding:20px;background:black}
 </style>
 </head>
 
@@ -146,75 +97,55 @@ background:black;
 
 <div class="hero">
 <h1>All-in-One Free Tools 😎</h1>
-<p>Use powerful tools for PDF, Images, AI & more in one place.</p>
+<p>PDF, Image, AI tools — all in one place</p>
 </div>
 
 <div class="container">
 
-<!-- PASSWORD -->
 <div class="card">
 <h3>🔐 Password Generator</h3>
-<p>Create strong and secure passwords instantly.<br>Protect your accounts easily with one click.</p>
+<p>Create strong passwords instantly.<br>Secure your accounts easily.</p>
 <button onclick="genPass()">Generate</button>
 <p id="pass"></p>
 </div>
 
-<!-- CALCULATOR -->
 <div class="card">
 <h3>🧮 Calculator</h3>
-<p>Quickly calculate numbers without leaving site.<br>Simple and fast math tool for daily use.</p>
+<p>Quick math calculations.<br>Simple and fast results.</p>
 <input id="num1" placeholder="Number 1">
 <input id="num2" placeholder="Number 2">
 <button onclick="calc()">Add</button>
 <p id="result"></p>
 </div>
 
-<!-- IMAGE TO PDF (YOUR OWN TOOL) -->
 <div class="card">
-<h3>📄 Image to PDF (Your Tool)</h3>
-<p>Convert images into PDF instantly.<br>No signup required, fully free tool.</p>
+<h3>📄 Image to PDF (Pro Tool)</h3>
+<p>Convert image into real PDF file.<br>Download instantly.</p>
 <input type="file" id="imgInput">
 <button onclick="convertPDF()">Convert</button>
 </div>
 
-<!-- JPG PNG -->
 <div class="card">
 <h3>🖼️ JPG to PNG</h3>
-<p>Convert JPG images to PNG format easily.<br>Maintain quality without loss.</p>
+<p>Convert images easily.<br>No quality loss.</p>
 <button onclick="window.open('https://image.online-convert.com/convert/jpg-to-png')">Convert</button>
 </div>
 
 <div class="card">
-<h3>🖼️ PNG to JPG</h3>
-<p>Convert PNG images into JPG quickly.<br>Useful for reducing file size.</p>
-<button onclick="window.open('https://image.online-convert.com/convert/png-to-jpg')">Convert</button>
-</div>
-
-<!-- PDF EDITOR -->
-<div class="card">
 <h3>📄 PDF Editor</h3>
-<p>Edit PDF files online easily.<br>Add text, images and more.</p>
+<p>Edit PDFs online.<br>Quick and easy editing.</p>
 <button onclick="window.open('https://www.ilovepdf.com/edit-pdf')">Open</button>
 </div>
 
-<!-- SCREENSHOT -->
 <div class="card">
 <h3>📸 Screenshot Editor</h3>
-<p>Edit screenshots and images online.<br>Advanced editing like Photoshop.</p>
+<p>Edit screenshots professionally.<br>Advanced editing tools.</p>
 <button onclick="window.open('https://www.photopea.com')">Edit</button>
 </div>
 
-<!-- AI -->
-<div class="card">
-<h3>🤖 AI Assistant</h3>
-<p>Chat with AI directly on website.<br>Ask questions and get instant answers.</p>
-<button onclick="toggleChat()">Open Chat</button>
-</div>
-
-<!-- PPT -->
 <div class="card">
 <h3>📊 AI PPT Maker</h3>
-<p>Create presentations using AI.<br>Save time and effort instantly.</p>
+<p>Create presentations using AI.<br>Save time instantly.</p>
 <button onclick="window.open('https://gamma.app')">Create</button>
 </div>
 
@@ -246,7 +177,7 @@ main.style.display="block";
 },2000);
 
 function genPass(){
-let c="ABC123xyz";
+let c="ABCDEFGHIJKLMNOPQRSTUVWXYZ123456";
 let p="";
 for(let i=0;i<8;i++){
 p+=c[Math.floor(Math.random()*c.length)];
@@ -258,28 +189,17 @@ function calc(){
 result.innerText=Number(num1.value)+Number(num2.value);
 }
 
-/* YOUR PDF TOOL */
 function convertPDF(){
 let file=document.getElementById("imgInput").files[0];
 if(!file){alert("Select image"); return;}
 
-let img=new Image();
+const { jsPDF } = window.jspdf;
 let reader=new FileReader();
 
 reader.onload=function(e){
-img.src=e.target.result;
-img.onload=function(){
-let canvas=document.createElement("canvas");
-canvas.width=img.width;
-canvas.height=img.height;
-let ctx=canvas.getContext("2d");
-ctx.drawImage(img,0,0);
-
-let link=document.createElement("a");
-link.download="converted.pdf";
-link.href=canvas.toDataURL("image/pdf");
-link.click();
-}
+let pdf=new jsPDF();
+pdf.addImage(e.target.result,'JPEG',10,10,180,160);
+pdf.save("converted.pdf");
 }
 reader.readAsDataURL(file);
 }
@@ -289,8 +209,7 @@ chatbot.style.display=(chatbot.style.display==="block")?"none":"block";
 }
 
 function sendMsg(){
-let input=userInput.value;
-chatbox.innerHTML+="<p>👤:"+input+"</p>";
+chatbox.innerHTML+="<p>👤:"+userInput.value+"</p>";
 chatbox.innerHTML+="<p>🤖:Hello 👋</p>";
 userInput.value="";
 }
