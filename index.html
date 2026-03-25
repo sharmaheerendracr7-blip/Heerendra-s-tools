@@ -4,215 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🔥 Heerendra Tools 🚀</title>
+<title>Heerendra Tools 🚀</title>
 
 <style>
-body {
-  font-family: Arial;
+body{
   margin:0;
+  font-family:Arial;
+  background:#0f0f0f;
   color:white;
   text-align:center;
-  background: linear-gradient(270deg, #0f0f0f, #1a1a1a, #0f0f0f);
-  background-size: 600% 600%;
-  animation: bgMove 10s infinite;
 }
 
-@keyframes bgMove {
-  0% {background-position: 0%}
-  50% {background-position: 100%}
-  100% {background-position: 0%}
-}
-
-/* Glow heading */
-h1 {
-  color:#00ffcc;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px #00ffcc; }
-  to { text-shadow: 0 0 25px #00ffcc; }
-}
-
-.container {
+nav{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.card {
-  background:#1c1c1c;
-  margin:10px;
+  justify-content:space-between;
   padding:15px;
-  border-radius:10px;
-  width:280px;
-  transition:0.3s;
-  animation: fadeIn 1s ease-in;
+  background:black;
 }
 
-.card:hover {
-  transform:scale(1.05);
-  box-shadow:0 0 15px #00ffcc;
-}
-
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-input {
-  padding:8px;
-  margin-top:8px;
-  border-radius:6px;
-  border:none;
-  width:90%;
-}
-
-button {
-  padding:8px 12px;
-  margin-top:10px;
-  border:none;
-  border-radius:6px;
-  background:#00ffcc;
-  cursor:pointer;
-}
-
-button:hover {
-  background:#00ccaa;
-}
-
-footer {
-  margin-top:40px;
-  padding:20px;
-  background:#000;
-}
-
-footer a {
-  color:#00ffcc;
-  margin:0 10px;
+nav a{
+  color:white;
+  margin:10px;
   text-decoration:none;
 }
 
-.float {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  font-size:30px;
-  animation: float 2s infinite;
+.container{
+  padding:20px;
 }
 
-@keyframes float {
-  0% { transform:translateY(0); }
-  50% { transform:translateY(-10px); }
-  100% { transform:translateY(0); }
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:15px;
+  margin:15px;
+  border-radius:10px;
 }
 
-@media(max-width:600px){ .card{width:90%;} }
+button{
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:5px;
+  background:linear-gradient(45deg,#00ffcc,#00ccff);
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+input{
+  padding:8px;
+  width:80%;
+  margin-top:10px;
+}
+
+footer{
+  background:black;
+  padding:20px;
+  margin-top:30px;
+}
 </style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
 
-<h1>🔥 Heerendra Tools 🚀</h1>
+<!-- NAVBAR -->
+<nav>
+<h2 style="color:#00ffcc;">🚀 Heerendra Tools</h2>
+<div>
+<a href="#">Home</a>
+<a href="#tools">Tools</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
-<p style="color:#aaa; max-width:600px; margin:auto;">
-Free online tools like PDF converter, password generator, calculator and more 💯
-</p>
-
-<div class="container">
-
-<div class="card">
-<h3>🫶🏻 Password Generator</h3>
-<button onclick="p()">Generate</button>
-<p id="p"></p>
+<!-- HERO -->
+<div style="padding:40px;">
+<h1>🔥 All-in-One Free Tools</h1>
+<p>PDF, Image, AI & More Tools in One Place 😎</p>
 </div>
 
+<!-- TOOLS -->
+<div class="container" id="tools">
+
+<h2>🛠️ Tools</h2>
+
 <div class="card">
-<h3>📝 Word Counter</h3>
-<input id="w">
-<button onclick="wc()">Count</button>
-<p id="wc"></p>
+<h3>🔐 Password Generator</h3>
+<button onclick="genPass()">Generate</button>
+<p id="pass"></p>
 </div>
 
 <div class="card">
 <h3>🧮 Calculator</h3>
-<input id="calc">
-<button onclick="cal()">Solve</button>
-<p id="cal"></p>
+<input id="num1" placeholder="Number 1">
+<input id="num2" placeholder="Number 2">
+<button onclick="calc()">Add</button>
+<p id="result"></p>
+</div>
+
+<!-- HYBRID TOOLS -->
+
+<div class="card">
+<h3>📄 PDF Editor</h3>
+<button onclick="window.open('https://www.ilovepdf.com/edit-pdf')">Open</button>
 </div>
 
 <div class="card">
-<h3>🖼️ Image to PDF</h3>
-<input type="file" id="imgInput">
-<button onclick="imgToPDF()">Convert</button>
+<h3>🖼️ JPG to PNG</h3>
+<button onclick="window.open('https://image.online-convert.com/convert/jpg-to-png')">Convert</button>
 </div>
 
 <div class="card">
-<h3>📄 Create PDF</h3>
-<input id="pdfText">
-<button onclick="makePDF()">Create</button>
+<h3>📸 Screenshot Editor</h3>
+<button onclick="window.open('https://www.photopea.com')">Edit</button>
 </div>
 
 <div class="card">
-<h3>🎲 Random Number</h3>
-<button onclick="rn()">Generate</button>
-<p id="rn"></p>
+<h3>🤖 AI Assistant</h3>
+<button onclick="window.open('https://chat.openai.com')">Open</button>
 </div>
 
+<div class="card">
+<h3>📊 AI PPT Maker</h3>
+<button onclick="window.open('https://gamma.app')">Create</button>
 </div>
 
-<!-- ABOUT -->
-<div style="max-width:700px; margin:30px auto; color:#bbb;">
-<h2>ℹ️ About</h2>
-<p>This website provides free tools like PDF converter, password generator and more 🚀</p>
-</div>
-
-<!-- CONTACT -->
-<div style="margin-top:30px;">
-<h3>📞 Contact</h3>
-<p>Email: sharmaheerendracr7@gmail.com</p>
-<p>Phone: 8905643678</p>
 </div>
 
 <!-- FOOTER -->
-<footer>
-<p>© 2026 Heerendra Tools 💸</p>
-<a href="about.html">About</a> |
-<a href="contact.html">Contact</a> |
-<a href="privacy.html">Privacy</a> |
-<a href="terms.html">Terms</a>
+<footer id="contact">
+<h3>📩 Contact</h3>
+<p>Email: sharmaheerendracr7@gmail.com</p>
+<p>Phone: 8905643678</p>
+<p>© 2026 Heerendra Tools</p>
 </footer>
 
-<!-- FLOAT EMOJI -->
-<div class="float">🚀</div>
+<!-- CHATBOT -->
+<div id="chatbot" style="position:fixed; bottom:20px; right:20px; width:300px; background:#111; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffcc;">
 
+<div style="background:#00ffcc; padding:10px; color:black;">
+🤖 AI Assistant
+</div>
+
+<div id="chatbox" style="height:200px; overflow-y:auto; padding:10px;"></div>
+
+<input id="userInput" placeholder="Type message..." style="width:70%; padding:5px;">
+<button onclick="sendMsg()">Send</button>
+
+</div>
+
+<!-- JS -->
 <script>
-function p(){let c="abc123XYZ@#";let pass="";for(let i=0;i<8;i++){pass+=c[Math.floor(Math.random()*c.length)]}document.getElementById("p").innerText=pass}
-function wc(){let t=w.value.trim();document.getElementById("wc").innerText=t? t.split(/\s+/).length:0}
-function cal(){try{document.getElementById("cal").innerText=eval(calc.value)}catch{document.getElementById("cal").innerText="Error"}}
-function rn(){document.getElementById("rn").innerText=Math.floor(Math.random()*1000)}
-
-function imgToPDF(){
- const { jsPDF } = window.jspdf;
- let file=document.getElementById("imgInput").files[0];
- if(!file) return alert("Select image first");
- let reader=new FileReader();
- reader.onload=function(e){
-  let pdf=new jsPDF();
-  pdf.addImage(e.target.result,'JPEG',10,10,180,160);
-  pdf.save("converted.pdf");
- }
- reader.readAsDataURL(file);
+function genPass(){
+let c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+let p="";
+for(let i=0;i<8;i++){
+p+=c[Math.floor(Math.random()*c.length)];
+}
+pass.innerText=p;
 }
 
-function makePDF(){
- const { jsPDF } = window.jspdf;
- let pdf=new jsPDF();
- let text=document.getElementById("pdfText").value;
- pdf.text(text,10,10);
- pdf.save("file.pdf");
+function calc(){
+result.innerText=Number(num1.value)+Number(num2.value);
+}
+
+function sendMsg(){
+let input=userInput.value;
+let chat=document.getElementById("chatbox");
+
+chat.innerHTML+="<p>👤: "+input+"</p>";
+
+let reply="I don't understand 🤔";
+
+if(input.toLowerCase().includes("hi")) reply="Hello 👋";
+if(input.toLowerCase().includes("tools")) reply="We have many tools 😎";
+if(input.toLowerCase().includes("pdf")) reply="Use PDF tools above 📄";
+if(input.toLowerCase().includes("bye")) reply="Bye 👋";
+
+chat.innerHTML+="<p>🤖: "+reply+"</p>";
+
+userInput.value="";
+chat.scrollTop=chat.scrollHeight;
 }
 </script>
 
