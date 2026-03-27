@@ -13,188 +13,176 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-body{margin:0;background:#0a0a0a;color:white;font-family:Arial}
-h1,h2{text-align:center}
+body{margin:0;font-family:Arial;background:#0a0a0a;color:white}
+header{text-align:center;padding:20px;background:black;font-size:24px}
 
-/* NAV */
-nav{padding:15px;text-align:center;background:black}
-
-/* SEARCH */
-#searchBar{
-width:90%;padding:12px;margin:20px;border:none;border-radius:8px
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
 }
 
-/* CARD */
 .card{
-background:#111;margin:15px;padding:20px;border-radius:12px;
-transition:.3s
+background:#111;
+padding:20px;
+border-radius:12px;
+transition:0.3s;
 }
 .card:hover{transform:scale(1.05);box-shadow:0 0 15px #00ffcc}
 
-/* BUTTON */
 button{
-padding:10px;background:#00ffcc;border:none;border-radius:6px;margin-top:10px
+padding:10px;
+border:none;
+border-radius:8px;
+background:#00ffcc;
+cursor:pointer;
+margin-top:10px;
 }
 
-/* CHAT */
-#chatToggle{
-position:fixed;bottom:20px;right:20px;
-background:#00ffcc;padding:15px;border-radius:50%;
-cursor:pointer
-}
-#chatbot{
-position:fixed;bottom:80px;right:20px;width:300px;
-background:#111;display:none;border-radius:10px
-}
+input{width:100%;padding:10px;margin-top:10px;border:none;border-radius:6px}
 </style>
 </head>
 
 <body>
 
-<nav>
-<h1>🚀 Tool Verse</h1>
-</nav>
+<header>🚀 Tool Verse</header>
 
-<h2>🔍 Coding Hub</h2>
-<input id="searchBar" placeholder="Search programs..." onkeyup="searchCode()">
+<div class="container">
 
-<div id="codeList"></div>
-
-<h2>🛠️ Tools</h2>
-
+<!-- IMAGE TO PDF -->
 <div class="card">
 <h3>📄 Image to PDF</h3>
-<input type="file" id="imgInput">
-<button onclick="convertPDF()">Convert</button>
+<input type="file" id="imgInput" accept="image/*">
+<button onclick="convertPDF()">Convert & Download</button>
 </div>
 
-<div class="card">
-<h3>📊 PPT Maker</h3>
-<input id="pptTitle" placeholder="Title">
-<input id="pptContent" placeholder="Content">
-<button onclick="makePPT()">Create</button>
-</div>
-
+<!-- IMAGE COMPRESS -->
 <div class="card">
 <h3>🖼️ Image Compressor</h3>
-<input type="file" id="imgCompress">
-<button onclick="compressImg()">Compress</button>
+<input type="file" id="imgCompress" accept="image/*">
+<button onclick="compressImg()">Compress & Download</button>
 </div>
 
-<!-- CHAT -->
-<div id="chatToggle" onclick="toggleChat()">🤖</div>
+<!-- JPG TO PNG -->
+<div class="card">
+<h3>🔄 JPG → PNG</h3>
+<input type="file" id="imgConvert" accept="image/*">
+<button onclick="convertImg()">Convert</button>
+</div>
 
-<div id="chatbot">
-<div style="background:#00ffcc;color:black;padding:10px">AI Chat</div>
-<div id="chatbox" style="height:200px;overflow:auto"></div>
-<input id="userInput">
-<button onclick="sendMsg()">Send</button>
+<!-- PASSWORD -->
+<div class="card">
+<h3>🔐 Password Generator</h3>
+<button onclick="genPass()">Generate</button>
+<p id="pass"></p>
+</div>
+
 </div>
 
 <script>
 
-/* PROGRAMS */
-let programs=[
-{name:"C Hello World",code:"#include<stdio.h>\nint main(){printf('Hello');}"},
-{name:"Python Hello",code:"print('Hello World')"},
-{name:"Java Hello",code:"class Main{public static void main(String[] a){System.out.println('Hello');}}"},
-{name:"Python Fibonacci",code:"a,b=0,1\nfor i in range(10): print(a);a,b=b,a+b"},
-{name:"C Factorial",code:"// factorial logic"},
-{name:"Java Loop",code:"// loop example"}
-];
-
-function showPrograms(list){
-let html="";
-list.forEach((p,i)=>{
-html+=`
-<div class="card">
-<h3>${p.name}</h3>
-<pre id="code${i}">${p.code}</pre>
-<button onclick="copyCode('code${i}')">Copy</button>
-</div>`;
-});
-document.getElementById("codeList").innerHTML=html;
-}
-showPrograms(programs);
-
-function searchCode(){
-let val=searchBar.value.toLowerCase();
-let filtered=programs.filter(p=>p.name.toLowerCase().includes(val));
-showPrograms(filtered);
-}
-
-function copyCode(id){
-navigator.clipboard.writeText(document.getElementById(id).innerText);
-alert("Copied!");
-}
-
-/* PDF */
+/* IMAGE TO PDF (FIXED) */
 function convertPDF(){
-let file=imgInput.files[0];
-if(!file){alert("Select image");return;}
-const { jsPDF } = window.jspdf;
-let reader=new FileReader();
+let file = document.getElementById("imgInput").files[0];
+if(!file){ alert("Select image"); return; }
 
-reader.onload=function(e){
-let img=new Image();
-img.src=e.target.result;
-img.onload=function(){
-let pdf=new jsPDF({unit:"px",format:[img.width,img.height]});
-pdf.addImage(img,'JPEG',0,0,img.width,img.height);
+const { jsPDF } = window.jspdf;
+let reader = new FileReader();
+
+reader.onload = function(e){
+let img = new Image();
+img.src = e.target.result;
+
+img.onload = function(){
+
+let pdf = new jsPDF({
+orientation: img.width > img.height ? "landscape" : "portrait",
+unit: "px",
+format: [img.width, img.height]
+});
+
+pdf.addImage(img, 'JPEG', 0, 0, img.width, img.height);
 pdf.save("ToolVerse.pdf");
 }
 }
+
 reader.readAsDataURL(file);
 }
 
-/* PPT */
-function makePPT(){
-let blob=new Blob(
-["Title: "+pptTitle.value+"\n\n"+pptContent.value],
-{type:"application/vnd.ms-powerpoint"}
-);
-let link=document.createElement("a");
-link.href=URL.createObjectURL(blob);
-link.download="ToolVerse.ppt";
-link.click();
-}
-
-/* COMPRESS */
+/* IMAGE COMPRESS (FIXED) */
 function compressImg(){
-let file=imgCompress.files[0];
-let reader=new FileReader();
+let file = document.getElementById("imgCompress").files[0];
+if(!file){ alert("Select image"); return; }
 
-reader.onload=function(e){
-let img=new Image();
-img.src=e.target.result;
+let reader = new FileReader();
 
-img.onload=function(){
-let canvas=document.createElement("canvas");
-canvas.width=img.width/2;
-canvas.height=img.height/2;
+reader.onload = function(e){
+let img = new Image();
+img.src = e.target.result;
 
-let ctx=canvas.getContext("2d");
-ctx.drawImage(img,0,0,canvas.width,canvas.height);
+img.onload = function(){
 
-let link=document.createElement("a");
-link.download="compressed.jpg";
-link.href=canvas.toDataURL("image/jpeg",0.6);
+let canvas = document.createElement("canvas");
+let ctx = canvas.getContext("2d");
+
+/* Resize to 70% */
+canvas.width = img.width * 0.7;
+canvas.height = img.height * 0.7;
+
+ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+let link = document.createElement("a");
+link.download = "compressed.jpg";
+link.href = canvas.toDataURL("image/jpeg", 0.6);
 link.click();
 }
 }
+
 reader.readAsDataURL(file);
 }
 
-/* CHAT */
-function toggleChat(){
-chatbot.style.display=chatbot.style.display==="block"?"none":"block";
+/* JPG TO PNG (REAL FIX) */
+function convertImg(){
+let file = document.getElementById("imgConvert").files[0];
+if(!file){ alert("Select image"); return; }
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+let img = new Image();
+img.src = e.target.result;
+
+img.onload = function(){
+
+let canvas = document.createElement("canvas");
+let ctx = canvas.getContext("2d");
+
+canvas.width = img.width;
+canvas.height = img.height;
+
+ctx.drawImage(img, 0, 0);
+
+let link = document.createElement("a");
+link.download = "converted.png";
+link.href = canvas.toDataURL("image/png");
+link.click();
+}
 }
 
-function sendMsg(){
-chatbox.innerHTML+="<p>👤:"+userInput.value+"</p>";
-chatbox.innerHTML+="<p>🤖:Hi 👋</p>";
-userInput.value="";
+reader.readAsDataURL(file);
 }
+
+/* PASSWORD */
+function genPass(){
+let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+let pass="";
+for(let i=0;i<10;i++){
+pass+=chars[Math.floor(Math.random()*chars.length)];
+}
+document.getElementById("pass").innerText=pass;
+}
+
 </script>
 
 </body>
