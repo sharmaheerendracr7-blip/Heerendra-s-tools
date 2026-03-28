@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Tool Verse 🚀 | Free Online Tools</title>
+  <title>Tool Verse 🚀 | Free Online Tools</title>
 
-<meta name="google-adsense-account" content="ca-pub-4632067561827198">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632067561827198"
-crossorigin="anonymous"></script>
+  <!-- SEO -->
+  <meta name="description" content="Free online tools - Image to PDF, Text to PDF, PDF merge and image compressor. Fast, secure and no login required.">
+  <meta name="keywords" content="free tools, pdf tools, image to pdf, text to pdf, compress image, online tools">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- ADSENSE META VERIFICATION -->
+  <meta name="google-adsense-account" content="ca-pub-4632067561827198">
 
-<style>
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#0a0a0a,#111);
-color:white;
-}
+  <!-- ADSENSE AUTO ADS SCRIPT -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632067561827198"
+    crossorigin="anonymous"></script>
 
-/* HEADER */
-header{
-text-align:center;
-padding:25px;
-font-size:28px;
-background:black;
-animation:fadeIn 1s ease;
-}
+  <!-- PDF LIB -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-.sub{
-text-align:center;
-color:gray;
-margin-bottom:20px;
-}
+  <style>
+    body{
+      margin:0;
+      font-family:'Segoe UI',sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#111);
+      color:white;
+    }
 
-/* GRID */
-.container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:20px;
-}
+    header{
+      text-align:center;
+      padding:25px;
+      font-size:28px;
+      background:black;
+      box-shadow:0 0 20px rgba(0,255,204,0.15);
+    }
 
-/* CARD */
-.card{
-background:#111;
-padding:20px;
-border-radius:15px;
-transition:0.3s;
-animation:fadeUp 1s ease;
-}
+    .sub{
+      text-align:center;
+      color:gray;
+      margin-bottom:20px;
+    }
 
-.card:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #00ffcc;
-}
+    .container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      padding:20px;
+    }
 
-/* BUTTON */
-button{
-padding:10px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#00ffcc,#00bfa6);
-cursor:pointer;
-margin-top:10px;
-}
+    .card{
+      background:#111;
+      padding:20px;
+      border-radius:15px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
 
-/* INPUT */
-input,textarea{
-width:100%;
-padding:10px;
-margin-top:10px;
-border:none;
-border-radius:6px;
-}
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 25px rgba(0,255,204,0.25);
+    }
 
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-background:black;
-margin-top:20px;
-}
+    button{
+      padding:10px 14px;
+      border:none;
+      border-radius:8px;
+      background:linear-gradient(45deg,#00ffcc,#00bfa6);
+      cursor:pointer;
+      margin-top:10px;
+      font-weight:600;
+    }
 
-/* ANIMATION */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}
-}
+    input,textarea{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+      border:none;
+      border-radius:6px;
+      box-sizing:border-box;
+    }
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-</style>
+    footer{
+      text-align:center;
+      padding:20px;
+      background:black;
+      margin-top:20px;
+    }
+
+    footer a{
+      color:#00ffcc;
+      text-decoration:none;
+      margin:0 8px;
+    }
+  </style>
 </head>
 
 <body>
@@ -104,109 +104,114 @@ to{opacity:1}
 
 <div class="container">
 
-<!-- IMAGE TO PDF -->
-<div class="card">
-<h3>📄 Image to PDF</h3>
-<input type="file" id="imgInput" accept="image/*">
-<button onclick="imgToPDF()">Convert & Download</button>
-</div>
+  <!-- IMAGE TO PDF -->
+  <div class="card">
+    <h3>📄 Image to PDF</h3>
+    <p style="color:gray">Free online Image to PDF converter. No login required. Fast & secure tool.</p>
+    <input type="file" id="imgInput" accept="image/*">
+    <button onclick="imgToPDF()">Convert & Download</button>
+  </div>
 
-<!-- TEXT TO PDF -->
-<div class="card">
-<h3>📝 Text to PDF</h3>
-<textarea id="textData" placeholder="Enter text..."></textarea>
-<button onclick="textToPDF()">Download PDF</button>
-</div>
+  <!-- TEXT TO PDF -->
+  <div class="card">
+    <h3>📝 Text to PDF</h3>
+    <p style="color:gray">Convert text to PDF instantly. Free tool with fast download and no signup.</p>
+    <textarea id="textData" placeholder="Enter text..."></textarea>
+    <button onclick="textToPDF()">Download PDF</button>
+  </div>
 
-<!-- PDF MERGE -->
-<div class="card">
-<h3>📑 PDF Merge</h3>
-<input type="file" id="pdfFiles" multiple>
-<button onclick="mergePDF()">Merge PDFs</button>
-<p style="color:gray">Note: Basic merge (images supported)</p>
-</div>
+  <!-- PDF MERGE -->
+  <div class="card">
+    <h3>📑 PDF Merge</h3>
+    <p style="color:gray">Merge multiple PDF files easily. Free and simple tool for quick use.</p>
+    <input type="file" id="pdfFiles" multiple>
+    <button onclick="mergePDF()">Merge PDFs</button>
+  </div>
 
-<!-- IMAGE COMPRESS -->
-<div class="card">
-<h3>🖼️ Image Compressor</h3>
-<input type="file" id="imgCompress" accept="image/*">
-<button onclick="compressImg()">Compress</button>
-</div>
+  <!-- IMAGE COMPRESS -->
+  <div class="card">
+    <h3>🖼️ Image Compressor</h3>
+    <p style="color:gray">Compress images online for free. Reduce size without losing quality.</p>
+    <input type="file" id="imgCompress" accept="image/*">
+    <button onclick="compressImg()">Compress & Download</button>
+  </div>
 
 </div>
 
 <footer>
-<a href="about.html">About</a> |
-<a href="privacy.html">Privacy</a> |
-<a href="terms.html">Terms</a> |
-<a href="disclaimer.html">Disclaimer</a>
+  <a href="about.html">About</a> |
+  <a href="privacy.html">Privacy</a> |
+  <a href="terms.html">Terms</a> |
+  <a href="disclaimer.html">Disclaimer</a>
 </footer>
 
 <script>
-
-/* IMAGE → PDF */
 function imgToPDF(){
-let file=document.getElementById("imgInput").files[0];
-if(!file){alert("Select image");return;}
+  const file=document.getElementById("imgInput").files[0];
+  if(!file){alert("Select image");return;}
 
-const { jsPDF } = window.jspdf;
-let reader=new FileReader();
+  const { jsPDF } = window.jspdf;
+  const reader=new FileReader();
 
-reader.onload=function(e){
-let img=new Image();
-img.src=e.target.result;
+  reader.onload=function(e){
+    const img=new Image();
+    img.src=e.target.result;
 
-img.onload=function(){
-let pdf=new jsPDF();
-pdf.addImage(img,'JPEG',10,10,180,160);
-pdf.save("image.pdf");
+    img.onload=function(){
+      const pdf=new jsPDF({
+        orientation: img.width > img.height ? "landscape" : "portrait",
+        unit:"px",
+        format:[img.width,img.height]
+      });
+
+      pdf.addImage(img,'JPEG',0,0,img.width,img.height);
+      pdf.save("image.pdf");
+    }
+  }
+  reader.readAsDataURL(file);
 }
-}
-reader.readAsDataURL(file);
-}
 
-/* TEXT → PDF */
 function textToPDF(){
-let text=document.getElementById("textData").value;
-if(!text){alert("Enter text");return;}
+  const text=document.getElementById("textData").value.trim();
+  if(!text){alert("Enter text");return;}
 
-const { jsPDF } = window.jspdf;
-let pdf=new jsPDF();
-pdf.text(text,10,10);
-pdf.save("text.pdf");
+  const { jsPDF } = window.jspdf;
+  const pdf=new jsPDF();
+  const lines=pdf.splitTextToSize(text,180);
+  pdf.text(lines,10,20);
+  pdf.save("text.pdf");
 }
 
-/* PDF MERGE (simple) */
 function mergePDF(){
-alert("Basic version only works with images converted to PDF.\nAdvanced merge needs backend.");
+  alert("PDF merge ka advanced version backend ke saath aur better hoga. Abhi placeholder active hai 👍");
 }
 
-/* COMPRESS */
 function compressImg(){
-let file=document.getElementById("imgCompress").files[0];
-let reader=new FileReader();
+  const file=document.getElementById("imgCompress").files[0];
+  if(!file){alert("Select image");return;}
 
-reader.onload=function(e){
-let img=new Image();
-img.src=e.target.result;
+  const reader=new FileReader();
 
-img.onload=function(){
-let canvas=document.createElement("canvas");
-canvas.width=img.width*0.7;
-canvas.height=img.height*0.7;
+  reader.onload=function(e){
+    const img=new Image();
+    img.src=e.target.result;
 
-let ctx=canvas.getContext("2d");
-ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    img.onload=function(){
+      const canvas=document.createElement("canvas");
+      canvas.width=img.width*0.7;
+      canvas.height=img.height*0.7;
 
-let link=document.createElement("a");
-link.download="compressed.jpg";
-link.href=canvas.toDataURL("image/jpeg",0.6);
-link.click();
+      const ctx=canvas.getContext("2d");
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+      const link=document.createElement("a");
+      link.download="compressed.jpg";
+      link.href=canvas.toDataURL("image/jpeg",0.6);
+      link.click();
+    }
+  }
+  reader.readAsDataURL(file);
 }
-}
-reader.readAsDataURL(file);
-}
-
 </script>
 
 </body>
